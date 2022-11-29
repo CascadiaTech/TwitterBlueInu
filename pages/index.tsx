@@ -143,18 +143,18 @@ const Home: NextPage = () => {
   }
 
   function formatMoney(n: any) {
-    return '$ ' + (Math.round(n * 100) / 100).toLocaleString()
+    return "$ " + (Math.round(n * 100) / 100).toLocaleString();
   }
   function numberWithCommas(num: any) {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   function insertDecimal(num: any) {
-    return Number((num / 1000000).toFixed(3))
+    return Number((num / 1000000).toFixed(3));
   }
-  console.log(insertDecimal(pendingreflections))
-  const test2 = insertDecimal(pendingreflections)
-  const formattedBalance = numberWithCommas(test2)
+  console.log(insertDecimal(pendingreflections));
+  const test2 = insertDecimal(pendingreflections);
+  const formattedBalance = numberWithCommas(test2);
 
   const jsonRpcUrlMap = {
     1: ["https://mainnet.infura.io/v3/fc5d70bd4f49467289b3babe3d8edd97"],
@@ -168,7 +168,7 @@ const Home: NextPage = () => {
           {" "}
           <HeaderComponent></HeaderComponent>
         </header>
-          <p className={"my-4"}></p>
+        <p className={"my-4"}></p>
         <p
           style={{ fontFamily: "Merriweather" }}
           className="mt-4 text-4xl drop-shadow-lg sm:text-4xl text-4xl text-center text-gray-100 md:text-4xl lg:text-5xl"
@@ -180,7 +180,7 @@ const Home: NextPage = () => {
 
         <div className={"mx-10 flex flex col justify-center"}>
           <Image
-            className={'rounded-full'}
+            className={"rounded-full"}
             src={TwitterBlueInu}
             alt="fire"
           ></Image>
@@ -198,7 +198,10 @@ const Home: NextPage = () => {
               "border rounded-xl drop-shadow-lg justify-center text-center w-fit h-fit py-10 px-20 md:px-40 lg:px-60"
             }
           >
-            <p style={{fontFamily: 'Merriweather'}} className={"self-center text-xl text-black"}>
+            <p
+              style={{ fontFamily: "Merriweather" }}
+              className={"self-center text-xl text-black"}
+            >
               Pending Reflections
             </p>
             <div
@@ -206,7 +209,7 @@ const Home: NextPage = () => {
               className="text-gray-100 bg-gradient-to-r from-blue-700 to-blue-900 focus:ring-4
               focus:outline-none focus:ring-gray-300 justify-center rounded-xl text-xl px-3 py-3 text-center mr-2 mb-2 md:w-52 lg:w-64"
             >
-              ${formattedBalance}  USDC
+              ${formattedBalance} USDC
             </div>
           </div>
         </div>
@@ -223,20 +226,46 @@ const Home: NextPage = () => {
               "border rounded-xl drop-shadow-lg justify-center text-center w-fit h-fit py-10 px-20 md:px-40 lg:px-60"
             }
           >
-            <p style={{fontFamily: 'Merriweather'}}
-             className={"self-center text-xl text-black"}>Claim Reflections</p>
-            <button
-              onClick={() => Claim()}
+            <p
               style={{ fontFamily: "Merriweather" }}
-              type="button"
-              className="text-gray-100 bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-500 hover:to-blue-700 focus:ring-4
-              focus:outline-none focus:ring-gray-300 rounded-lg text-xl px-3 py-3 text-center mr-2 mb-2 w-28 md:w-52 lg:w-64"
+              className={"self-center text-xl text-black"}
             >
-              Claim
-            </button>
+              Claim Reflections
+            </p>
+            {pendingreflections > 0 ? (
+              <>{" "}
+                <button
+                  onClick={() => Claim()}
+                  style={{ fontFamily: "Merriweather" }}
+                  type="button"
+                  className="text-gray-100 bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-500 hover:to-blue-700 focus:ring-4
+              focus:outline-none focus:ring-gray-300 rounded-lg text-xl px-3 py-3 text-center mr-2 mb-2 w-28 md:w-52 lg:w-64"
+                >
+                  Claim
+                </button>
+                
+              </>
+            ) : 
+              <>
+                <button
+                  onClick={() => {
+                    Swal.fire({
+                      icon: "error",
+                      title: "Currently You Do Not Have Any Reflections",
+                      timer: 5000,
+                    });
+                  }}
+                  style={{ fontFamily: "Merriweather" }}
+                  type="button"
+                  className="text-gray-100 bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-500 hover:to-blue-700 focus:ring-4
+            focus:outline-none focus:ring-gray-300 rounded-lg text-xl px-3 py-3 text-center mr-2 mb-2 w-28 md:w-52 lg:w-64"
+                >
+                  Claim
+                </button>
+              </>
+            }
           </div>
         </div>
-
         <div
           className={
             " mx-auto justify-center self-center px-6 text-center mt-10 mb-10 md:mt-0 md:mb-0"
@@ -273,7 +302,7 @@ const Home: NextPage = () => {
             </>
           ) : (
             <>
-            <p className={'my-12'}></p>
+              <p className={"my-12"}></p>
               <div
                 style={{
                   background:
@@ -283,8 +312,10 @@ const Home: NextPage = () => {
                   "border rounded-xl drop-shadow-lg justify-center text-center w-fit h-fit py-10 px-20 md:px-40 lg:px-60"
                 }
               >
-                <p style={{fontFamily: 'Merriweather'}} 
-                className={"text-xl self-center drop-shadow-md text-black"}>
+                <p
+                  style={{ fontFamily: "Merriweather" }}
+                  className={"text-xl self-center drop-shadow-md text-black"}
+                >
                   Please Connect Wallet to Purchase TwitterBlueInu
                 </p>
               </div>
