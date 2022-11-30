@@ -216,7 +216,7 @@ const Home: NextPage = () => {
 
         <p className={"my-4"}></p>
 
-        <div className={"justify-center"}>
+        <div className={" justify-center"}>
           <div
             style={{
               background:
@@ -233,7 +233,8 @@ const Home: NextPage = () => {
               Claim Reflections
             </p>
             {pendingreflections > 0 ? (
-              <>{" "}
+              <>
+                {" "}
                 <button
                   onClick={() => Claim()}
                   style={{ fontFamily: "Merriweather" }}
@@ -243,9 +244,8 @@ const Home: NextPage = () => {
                 >
                   Claim
                 </button>
-                
               </>
-            ) : 
+            ) : (
               <>
                 <button
                   onClick={() => {
@@ -263,7 +263,30 @@ const Home: NextPage = () => {
                   Claim
                 </button>
               </>
+            )}
+          </div>
+          <p style={{fontFamily: 'Merriweather'}}
+            className={
+              "mx-auto text-center text-xl text-gray-100"
             }
+          >
+            Contract:
+          </p>
+          <div
+            className={
+              "text-center border border white h-fit"
+            }
+          >
+            <a href="https://etherscan.io/address/0x103b603D95F769a8184c1e7cd49c81Bc826aB6E8">
+              <p
+                className={
+                  "text-gray-100 hover:text-blue-500 cusor-pointer text-sm sm:text-sm md:text-lg lg:text-lg"
+                }
+                style={{ fontFamily: "Merriweather" }}
+              >
+                0x103b603D95F769a8184c1e7cd49c81Bc826aB6E8
+              </p>
+            </a>
           </div>
         </div>
         <div
